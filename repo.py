@@ -37,4 +37,5 @@ if __name__ == "__main__":
     os.system("mkdir "+ nr.rname)
     os.chdir("/Users/nicholascassara/Desktop/"+nr.rname)
     os.system("git init")
+    os.system("git remote add origin https://github.com/ncass/pi-projects.git")
     
