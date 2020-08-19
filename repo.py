@@ -5,8 +5,10 @@ import sys
 
 #setup webdriver
 class r:
-    def __init__(self, rname, description):
+    def __init__(self, user, pwd, rname, description):
         self.url = "https://github.com/login"
+        self.user = user
+        self.pwd = pwd
         self.rname = rname
         self.description = description
         self.driver = webdriver.Chrome("/usr/local/bin/chromedriver")
@@ -14,19 +16,19 @@ class r:
     #method to take github url and setup repo
     def go(self):
         self.driver.get(self.url)
-        self.usrname = self.driver.find_element_by_id("login_field").send_keys("ncass")
-        self.pwd = self.driver.find_element_by_id("password").send_keys("nickroks45")
+        self.usrname = self.driver.find_element_by_id("login_field").send_keys(self.user)
+        self.pwd = self.driver.find_element_by_id("password").send_keys(self.pwd)
         self.signin = self.driver.find_element_by_name("commit").click()
         self.create = self.driver.find_element_by_xpath("/html/body/div[4]/div/aside[1]/div[2]/div[1]/div/h2/a").click()
         self.repo = self.driver.find_element_by_id("repository_name").send_keys(self.rname)
         self.desc = self.driver.find_element_by_id("repository_description").send_keys(self.description)
-        self.submit = self.driver.find_element_by_xpath("/html/body/div[4]/main/div/form/div[4]/button").click()
+        #self.submit = self.driver.find_element_by_xpath("/html/body/div[4]/main/div/form/div[4]/button").click()
     
     def quit(self):
         self.driver.close()
-
+#Takes in 4 args -> username, password, repository name, repository description
 if __name__ == "__main__":
-    nr = r(str(sys.argv[1]), str(sys.argv[2]))
+    nr = r(str(sys.argv[1]), str(sys.argv[2]), str(sys.argv[3]), str(sys.argv[4]))
     nr.go()
     nr.quit()
 
