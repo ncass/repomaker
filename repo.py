@@ -22,7 +22,7 @@ class r:
         self.create = self.driver.find_element_by_xpath("/html/body/div[4]/div/aside[1]/div[2]/div[1]/div/h2/a").click()
         self.repo = self.driver.find_element_by_id("repository_name").send_keys(self.rname)
         self.desc = self.driver.find_element_by_id("repository_description").send_keys(self.description)
-        #self.submit = self.driver.find_element_by_xpath("/html/body/div[4]/main/div/form/div[4]/button").click()
+        self.submit = self.driver.find_element_by_xpath("/html/body/div[4]/main/div/form/div[4]/button").click()
     
     def quit(self):
         self.driver.close()
